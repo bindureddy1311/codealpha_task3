@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Borrowing History</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Book Title</th>
+            <th>Borrowed Date</th>
+            <th>Returned Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in history_records %}
+        <tr>
+            <td>{{ record.book.title }}</td>
+            <td>{{ record.borrow_date.strftime('%Y-%m-%d') }}</td>
+            <td>{{ record.return_date.strftime('%Y-%m-%d') if record.return_date else 'Not Returned' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Books in {{ category }}</h2>
+<ul class="list-group">
+    {% for book in books %}
+    <li class="list-group-item">
+        <strong>{{ book.title }}</strong> by {{ book.author }}
+        <div>ISBN: {{ book.isbn }}</div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

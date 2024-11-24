@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Search Results</h2>
+<form method="GET" action="{{ url_for('search') }}">
+    <input type="text" name="q" value="{{ query }}" class="form-control mb-3" placeholder="Search by title, author, or ISBN">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+{% if results %}
+    <ul class="list-group mt-3">
+        {% for book in results %}
+        <li class="list-group-item">
+            <strong>{{ book.title }}</strong> by {{ book.author }}
+            <span class="badge bg-info">{{ book.category }}</span>
+            <div>ISBN: {{ book.isbn }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No books found for "{{ query }}"</p>
+{% endif %}
+{% endblock %}
